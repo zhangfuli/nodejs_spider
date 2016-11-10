@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "cheerio": "^0.22.0",
+    "fs": "0.0.1-security",
     "iconv-lite": "^0.4.13",
     "request": "^2.77.0"
   }
