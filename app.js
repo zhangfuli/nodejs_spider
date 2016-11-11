@@ -35,12 +35,13 @@ function selfRequest(url,callback){
 	}
 	request(options,callback);
 }
-function request(url){
+function my_request(url){
 	selfRequest(url,function(err,res,body){
 		if(!err&&res.statusCode ==200){
 			//var html = iconv.decode(body,'gb2312'); //转化编码		
 			body = body.toString();
 			var array = body.split("},");
+			console.log(url);
 			fs.writeFile('./somefile.txt',url+'\n',{encoding:"utf8",flag:"a"},function(err){    
 					if(!err){
 						console.log('succeed');
@@ -61,16 +62,29 @@ function request(url){
 	})
 }
 for(var i=1;i<=30;i++){
-	var count = 1;
-	count++;
-	if(count == 30){
-
+	if(i<10){
+		url = "http://yb.upc.edu.cn:8081/test/chengji?studentid=150702010"+i;
 	}
+	else{
+		url = "http://yb.upc.edu.cn:8081/test/chengji?studentid=15070201"+i;
+	}
+	my_request(url);
+}
+for(var i=1;i<=30;i++){
+	if(i<10){
+		url = "http://yb.upc.edu.cn:8081/test/chengji?studentid=150702020"+i;
+	}
+	else{
+		url = "http://yb.upc.edu.cn:8081/test/chengji?studentid=15070202"+i;
+	}
+	my_request(url);
+}
+for(var i=1;i<=30;i++){
 	if(i<10){
 		url = "http://yb.upc.edu.cn:8081/test/chengji?studentid=150702030"+i;
 	}
 	else{
 		url = "http://yb.upc.edu.cn:8081/test/chengji?studentid=15070203"+i;
 	}
-	
+	my_request(url);
 }
